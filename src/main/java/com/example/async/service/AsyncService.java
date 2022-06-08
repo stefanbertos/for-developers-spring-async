@@ -6,8 +6,6 @@ import com.example.async.util.SecurityUtil;
 import com.example.async.vo.Status;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,14 +33,14 @@ public class AsyncService {
         asyncStatus = asyncRepository.save(asyncStatus);
 
         log.info("submit {}", asyncStatus.toString());
-        log.info ("security user: {}", SecurityUtil.getUser());
+        log.info ("security user in submit method: {}", SecurityUtil.getUser());
         submitService.run(asyncStatus.getId());
 
         return asyncStatus.getId();
     }
 
     @Transactional(readOnly = true)
-    public AsyncStatus getStatus(long id) {
-        return asyncRepository.getReferenceById(id);
+    public String getStatus(long id) {
+        return asyncRepository.getReferenceById(id).toString();
     }
 }

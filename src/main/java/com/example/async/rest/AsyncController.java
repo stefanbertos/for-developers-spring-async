@@ -25,7 +25,7 @@ public class AsyncController {
     }
 
     @GetMapping
-    public AsyncStatus getStatus(long id) {
+    public String getStatus(long id) {
         return asyncService.getStatus(id);
     }
 

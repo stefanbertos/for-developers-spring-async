@@ -5,3 +5,5 @@ To run this use:
 'gradlew bootRun'
 
 http://localhost:8888/swagger-ui.html
+
+see also https://www.baeldung.com/spring-security-async-principal-propagation

@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -23,10 +24,11 @@ public class SubmitService {
     }
 
     @Async
+    @Transactional
     public void run(long id) {
         try {
             Thread.sleep(5000);
-            log.info ("security user: {}", SecurityUtil.getUser());
+            log.info ("security user in asynch method: {}", SecurityUtil.getUser());
 
             AsyncStatus asyncStatus = asyncRepository.getReferenceById(id);
             asyncStatus.setStatus(Status.FINISHED);
