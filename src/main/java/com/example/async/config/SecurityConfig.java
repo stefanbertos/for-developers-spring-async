@@ -30,8 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic();
     }
-    /*@Bean
+    @Bean
     public DelegatingSecurityContextAsyncTaskExecutor taskExecutor(ThreadPoolTaskExecutor delegate) {
         return new DelegatingSecurityContextAsyncTaskExecutor(delegate);
-    }*/
+    }
 }
